@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-plain">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title mt-0"> Table on Plain Background</h4>
+                <p class="card-category"> Here is a subtitle for this table</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="">
+                            <th>
+                                No. 
+                            </th>
+                            <th>
+                                Name 
+                            </th>
+                            <th>
+                                Address
+                            </th>
+                            <th>
+                                Phone
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                        </thead>
+                        <tbody>
+                            <% tutors.forEach((tutor, index)=> { %>
+                                <tr>
+                                    <td>
+                                        <%= index+1 %> 
+                                    </td>
+                                    <td>
+                                        <%= tutor.firstname + " " + tutor.lastname %> 
+                                    </td>
+                                    <td>
+                                        <%= tutor.address + ", " + tutor.city + ", " + tutor.country%> 
+                                    </td>
+                                    <td>
+                                        <%= tutor.phone %> 
+                                    </td>
+                                    <td>
+                                        <%= tutor.email %> 
+                                    </td>
+                                    <td >
+                                        <a href="/tutor-detail/<%= tutor._id %>" title="View detail">
+                                            <span class="material-icons">
+                                                details
+                                            </span>
+                                        </a>
+
+                                        <a href="/feed-back/<%= tutor._id %>" title="View feedback">
+                                            <span class="material-icons">
+                                                feedback
+                                            </span>
+                                        </a>
+
+                                        <a href="/report/<%= tutor._id %>" title="View report">
+                                            <span class="material-icons">
+                                                trending_up
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

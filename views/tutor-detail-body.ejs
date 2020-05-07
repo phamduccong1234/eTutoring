@@ -1,0 +1,138 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-plain">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title mt-0"> Allocated </h4>
+                <p class="card-category">The list of students has been allocated to <%= tutor.firstname+" "+tutor.lastname %>  to manage</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="">
+                            <th>
+                                No. 
+                            </th>
+                            <th>
+                                Name 
+                            </th>
+                            <th>
+                                Address
+                            </th>
+                            <th>
+                                Phone
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </thead>
+                        <tbody>
+                            <% allocate.students.forEach((student, index)=> { %>
+                                <tr>
+                                    <td>
+                                        <%= index+1 %> 
+                                    </td>
+                                    <td>
+                                        <%= student.firstname + " " + student.lastname %> 
+                                    </td>
+                                    <td>
+                                        <%= student.address + ", " + student.city + ", " + student.country%> 
+                                    </td>
+                                    <td>
+                                        <%= student.phone %> 
+                                    </td>
+                                    <td>
+                                        <%= student.email %> 
+                                    </td>
+                                    <td >
+                                        <a href="/student-detail/<%= student._id %>" title="View detail">
+                                            <span class="material-icons">
+                                                details
+                                            </span>
+                                        </a>
+                                        <a href="/tutor-reallocate/<%= allocate._id %>/<%= student._id %>" title="Reallocate">
+                                            <span class="material-icons">
+                                                close
+                                            </span>
+                                        </a>
+                                        
+                                    </td>
+                                </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="card card-plain">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title mt-0">List of unallocated students</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="">
+                            <th>
+                                No. 
+                            </th>
+                            <th>
+                                Name 
+                            </th>
+                            <th>
+                                Address
+                            </th>
+                            <th>
+                                Phone
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </thead>
+                        <tbody>
+                            <% studentUnAllocated.forEach((student, index)=> { %>
+                                <tr>
+                                    <td>
+                                        <%= index+1 %> 
+                                    </td>
+                                    <td>
+                                        <%= student.firstname + " " + student.lastname %> 
+                                    </td>
+                                    <td>
+                                        <%= student.address + ", " + student.city + ", " + student.country%> 
+                                    </td>
+                                    <td>
+                                        <%= student.phone %> 
+                                    </td>
+                                    <td>
+                                        <%= student.email %> 
+                                    </td>
+                                    <td >
+                                        <a href="/student-detail/<%= student._id %>" title="View detail">
+                                            <span class="material-icons">
+                                                details
+                                            </span>
+                                        </a>
+                                        <a href="/tutor-allocate/<%= allocate._id %>/<%= student._id %>" title="Allocate for <%= tutor.firstname %>" >
+                                            <span class="material-icons">
+                                                assignment
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>

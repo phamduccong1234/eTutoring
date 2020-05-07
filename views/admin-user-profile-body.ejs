@@ -1,0 +1,155 @@
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">Add Profile</h4>
+        <p class="card-category">Complete your profile</p>
+      </div>
+      <div class="card-body">
+        <form method="POST" action="">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="bmd-label-floating">Fist Name</label>
+                <input type="text" class="form-control" name="firstname" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="bmd-label-floating">Last Name</label>
+                <input type="text" class="form-control" name="lastname" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="bmd-label-floating">Adress</label>
+                <input type="text" class="form-control" name="address">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="bmd-label-floating">City</label>
+                <input type="text" class="form-control" name="city">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="bmd-label-floating">Country</label>
+                <input type="text" class="form-control" name="country">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="bmd-label-floating">Phone number</label>
+                <input type="text" class="form-control" name="phone">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="bmd-label-floating">Email</label>
+                <input type="email" class="form-control" name="email" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="bmd-label-floating">Username</label>
+                <input type="text" class="form-control" required
+                  name="username">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="bmd-label-floating">Password</label>
+                <input type="password" class="form-control" required
+                  name="password">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>About Me</label>
+                <div class="form-group">
+                  <label class="bmd-label-floating"> My name is Ann Smith. I am
+                    a senior in high school. Everyone can agree that I am a good
+                    student and that I like to study. My favorite subjects are
+                    chemistry and biology.</label>
+                  <textarea class="form-control" rows="5" name="aboutme"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Role</label>
+                <div class="row" style="padding: 20px;">
+                  <div class="custom-control custom-radio col-md-3">
+                    <input checked="checked" type="radio" class="custom-control-input" id="radioStudent" name="role" value="student" required selected>
+                    <label class="custom-control-label" for="radioStudent">Student</label>
+                  </div>
+
+                  <div class="custom-control custom-radio col-md-3">
+                    <input type="radio" class="custom-control-input" id="radioTutor" name="role" value="tutor" required>
+                    <label class="custom-control-label" for="radioTutor">Tutor</label>
+                  </div>
+
+                  <div class="custom-control custom-radio col-md-3">
+                    <input type="radio" class="custom-control-input" id="radioStaff" name="role" value="staff" required>
+                    <label class="custom-control-label" for="radioStaff">Staff</label>
+                  </div>
+
+                  <div class="custom-control custom-radio col-md-3">
+                    <input type="radio" class="custom-control-input" id="radioAdmin" name="role" value="admin" required>
+                    <label class="custom-control-label" for="radioAdmin">Admin</label>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="display: none;">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="bmd-label-floating">Image Base64</label>
+                <input type="text" class="form-control" name="imagebase64">
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary pull-right">Save
+            Profile</button>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card card-profile">
+      <div class="card-avatar">
+        <a href="javascript:;">
+          <img id="image_preview" style="width: 200px !important; height: 200px
+            !important;" class="img" src="images/faces/marc.jpg" />
+        </a>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Upload avatar</h4>
+        <p class="card-description">
+          Please choose the best quality picture. If you do not select photos,
+          we will leave them as the default images
+        </p>
+        <input class="btn btn-primary btn-round" type="file" name="avatar"
+          onchange="readURL(this);" id="load_img">
+      </div>
+    </div>
+  </div>
+</div>
+<script src="javascripts/preview-image.js"></script>

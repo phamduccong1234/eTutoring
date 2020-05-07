@@ -1,0 +1,53 @@
+<div class="sidebar" data-color="azure" data-background-color="white"
+  data-image="/images/sidebar-1.jpg">
+  <!--
+Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+Tip 2: you can also add an image using data-image tag
+-->
+  <div class="logo"><a href="/"
+      class="simple-text logo-normal">
+      e-Tutoring
+    </a></div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+
+      <!-- implement dashboard navigation -->
+      <% for( let i= 0; i <dashboards.length; i++ ) { %>
+        <% if (title.includes(dashboards[i].title)) { %>
+          <li class="nav-item active">
+        <% }else{ %>
+          <li class="nav-item">
+        <% } %>
+          <a class="nav-link" href="<%= dashboards[i].url %>">
+            <i class="material-icons"><%= dashboards[i].icon %></i>
+            <p><%= dashboards[i].title %></p>
+          </a>
+        </li>
+      <% } %>
+          <li class="nav-item active-pro">
+            <a class="nav-link" href="./upgrade.html">
+              <i class="material-icons">unarchive</i>
+              <p>Upgrade to PRO</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+<script type="text/javascript">
+  setTimeout(()=>{
+    showNotification = function(content, type) {
+      md.showNotification(content, type);
+    }
+    var message = "<%= message %>";
+    if(typeof message !== "undefined"){
+      var content = "<%= message.content %>";          
+      var type = "<%= message.type %>";
+      if(content.length >0)          
+        showNotification(content,type);
+    }
+  },1000);
+</script>
+

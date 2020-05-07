@@ -1,0 +1,110 @@
+
+<div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title">Create metting room</h4>
+          <p class="card-category">Complete all information</p>
+        </div>
+        <div class="card-body">
+          <form method="POST" action="">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Title</label>
+                  <input type="text" class="form-control" name="title" required minlength="10" maxlength="100">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>About Me</label>
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam dicta earum accusamus numquam</label>
+                    <textarea class="form-control" rows="5" name="description" minlength="5" maxlength="1000"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Mode</label>
+                  <div class="row" style="padding: 20px;">
+                    <div class="custom-control custom-radio col-md-3">
+                      <input type="radio" class="custom-control-input" id="radioStudent" name="mode" value="private" required checked="checked">
+                      <label class="custom-control-label" for="radioStudent">Private</label>
+                    </div>
+  
+                    <div class="custom-control custom-radio col-md-3">
+                      <input type="radio" class="custom-control-input" id="radioTutor" name="mode" value="public" required>
+                      <label class="custom-control-label" for="radioTutor">Public</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" style="display: none;">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Image Base64</label>
+                  <input type="text" class="form-control" name="imagebase64">
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary pull-right">Save
+              Profile</button>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-profile">
+            <div class="card-avatar">
+              <a href="javascript:;">
+                <img id="image_preview" class="img" src="images/faces/marc.jpg" />
+              </a>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">Upload avatar</h4>
+              <p class="card-description">
+                Please choose the best quality picture. If you do not select photos,
+                we will leave them as the default images
+              </p>
+              <input class="btn btn-primary btn-round" type="file" name="avatar"
+                onchange="readURL(this);" id="load_img">
+            </div>
+          </div>
+        </div>
+        <!-- Join now -->
+        <% if (locals.metting) { %>
+          <div class="col-md-12">
+            <div class="card card-profile">
+              <div class="card-avatar">
+                <a href="javascript:;">
+                  <img id="image_preview" style="width: 200px !important; height: 200px
+                    !important;" class="img" src="<%= metting.imagebase64 %>" />
+                </a>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title"><%= metting.title %></h4>
+                <p class="card-description">
+                  <%= metting.description %>
+                </p>
+                <a href="/metting-join/<%= metting._id %> ">
+                  <button class="btn btn-primary btn-round">Join now...</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        <% } %>
+        <!-- End Join now -->
+      </div>
+    </div>
+  </div>
+  <script src="javascripts/preview-image.js"></script>
+  

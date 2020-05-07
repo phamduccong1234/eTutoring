@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-md-12">
+        <a href="metting-create" class="btn btn-success">Create new metting</a>
+    </div>
+
+    <div class="col-md-12" style="margin-top: 40px;">
+        <div class="row">
+            <!-- Card metting -->
+            <% if (locals.mettings) { %>
+              <% mettings.forEach(metting => { %>
+                <div class="col-md-4">
+                  <div class="card card-profile">
+                    <div class="card-avatar">
+                      <a href="javascript:;">
+                        <img id="image_preview" class="img" src="<%= metting.imagebase64 %> " />
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <h4 class="card-title"><%= metting.title %> </h4>
+                      <p class="card-description">
+                          <%= metting.description %> 
+                      </p>
+                      <div class="d-block" style="margin-top: 10px;margin-right: 10px;
+                      margin-left: 20px; margin-bottom: 10px;">
+                          <a href="">
+                              <img title="" class="d-inline"
+                                  src="/images/orez.jpg" style="width:50px; height:
+                                  50px; border-radius: 50%;">
+                          </a>
+                      </div>
+                      <a href="/metting-join/<%= metting._id %> ">
+                        <button class="btn btn-primary btn-round">Join now...</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              <% }) %>
+            <% } %>
+            <!-- End Card metting -->
+        </div>
+    </div>
+</div>

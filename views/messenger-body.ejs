@@ -1,0 +1,156 @@
+<% if (messengers.length>0) { %>
+    
+<% 
+if(account.role === 'tutor'){
+    var to = messengers[0].student;
+}else{
+    var to = messengers[0].tutor;
+}
+
+%> 
+
+<script type="text/javascript">
+
+var from_user = <%- JSON.stringify(account) %>;
+var account_role = "<%= account.role %>";
+var to_user = <%- JSON.stringify(to) %>;
+
+
+</script>
+
+
+<div class="row">
+<div class="col-md-12">
+    <div id="frame">
+        <div id="sidepanel">
+            <div id="profile">
+                <div class="wrap">
+                    <img id="profile-img"
+                        <% if (account.imagebase64.length!=0) { %>
+                            src="<%= account.imagebase64 %> "
+                        <% }else{ %>
+                            src="/images/orez.jpg"
+                        <% } %>
+                        class="online" alt="<%= account.firstname+" "+account.lastname %>" />
+                    <p style="text-transform: capitalize;"><%= account.firstname+" "+account.lastname %></p>
+                </div>
+            </div>
+            <div id="search">
+                <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
+                <input type="text" placeholder="Search contacts..." />
+            </div>
+            <div id="contacts">
+                <ul>
+                    <% messengers.forEach((messenger, index) => { %>
+                        <% 
+                            var student = messenger.student;
+                            if(account.role == 'tutor'){
+                                var user = messenger.student;
+                                var other = messenger.tutor;
+                            }else{
+                                var user = messenger.tutor;
+                                var other = messenger.student;
+                            }
+                            var id = user._id;
+                            var image = user.imagebase64;
+                            var name = user.firstname+" "+user.lastname;
+                            var messages = messenger.messages;
+                            if(messages.length!=0){
+                                var firstMessage = messages[messages.length - 1];
+                                if(firstMessage.fromId == user._id){
+                                    var firstContent = user.firstname+": "+firstMessage.content;
+                                }else{
+                                    var firstContent = "You: "+firstMessage.content;
+                                }
+                            }else{
+                                var firstContent="";
+                            }
+                                
+                            if (image.length==0) 
+                               image = "/images/orez.jpg"; 
+                            
+                        %> 
+                        <% if (index == 0) { %>
+                            <li class="contact active" id="<%= id %>" onclick="changeContact(this)">
+                        <% }else{ %>
+                            <li class="contact" id="<%= id %>" onclick="changeContact(this)">
+                        <% } %>
+                            <div class="wrap">
+                                <span class="contact-status online"></span>
+                                <img src="<%= image %>" alt="" style="min-height: 40px; min-width: 40px;" />
+                                <div class="meta">
+                                    <p class="name" style="text-transform:capitalize"><%= name %> </p>
+                                    <p class="preview" ><%= firstContent %> </p>
+                                </div>
+                            </div>
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="contact-profile">
+                <% 
+                    if(account.role == 'tutor'){
+                        var user = messengers[0].student;
+                    }else{
+                        var user = messengers[0].tutor;
+                    }
+                    var image = user.imagebase64;    
+                    if (image.length==0) 
+                        image = "/images/orez.jpg";     
+                %> 
+                <img id="main-avatar" src="<%= image %> "
+                    alt="" style="min-height: 40px; min-width: 40px;"/>
+                <p id="main-name"><%= to.firstname+" "+to.lastname %> </p>
+                <div class="social-media">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="messages">
+                <ul id="list-messages">
+                    <% 
+                        var messages = messengers[0].messages;
+                        var student = messengers[0].student;
+                        var tutor = messengers[0].tutor;
+                    %>
+                    <% messages.forEach(message => { %>
+                        <% 
+                            if(account._id == student._id){
+                                var image = student.imagebase64;
+                            }else{
+                                var image  = tutor.imagebase64;
+                            }
+                            if(image.length==0)
+                                image = "/images/orez.jpg"
+                                
+                        %>
+                        <% if (account._id == message.fromId) { %>
+                            <li class="replies">
+                        <% }else{ %>
+                            <li class="sent">
+                        <% } %>
+                        <img
+                            src="<%= image %> "
+                            alt=""  style="min-height: 40px; min-width: 40px;" />
+                        <p><%= message.content %> </p>
+                    <% }) %> 
+                </ul>
+            </div>
+            <div class="message-input">
+                <div class="wrap">
+                    <input type="text" placeholder="Write your message..."
+                        />
+                    <i class="fa fa-paperclip attachment"
+                        aria-hidden="true"></i>
+                    <button class="submit"><i class="fa fa-paper-plane"
+                            aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<% } %>

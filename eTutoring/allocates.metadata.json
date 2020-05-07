@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"eTutoring.allocates"}],"uuid":"4c08596e028b4a239d07fb46ddda4c8c"}
